@@ -5,7 +5,7 @@ function draw() {
    var width = $('#width').val();
    var height = $('#height').val();
    var grain = $('#grain').val();
-   if($('#link').val()==1) $('#seed').val('custom');
+   if($('#link').val()==1) {$('#seed').val('custom') && $('#link').val(0); seed='custom';}
 
    //check bounds
    ((rule>=0 && rule<=255) ? null : rule=110); //check rule bounds
@@ -71,6 +71,9 @@ function donext(rule,row,cols) {
       }
    return tmp_row; 
    }
+Math.base = function(n, from, to) {
+   return parseInt(n, from).toString(to);
+   }
 function make_rule(rule) {
    var rule_a=new Array();
    for(var i=7; i>=0; i--) {
@@ -105,6 +108,14 @@ function doseed(seed,cols) {
                cur_row[i]=1;
             }
          break;
+     /* case 'custom':
+         alert(Math.base($('#custom_seed').val(),36,2));
+         var binary=Math.base($('#custom_seed').val(),36,2).split('');
+         binary.reverse();
+         for(var i=0; i<binary.length; i++) {
+            cur_row[cols-i]=binary[i];
+            }
+         break;*/
       default:
          var mid=Math.floor(cols/2); 
          cur_row[mid]=1;
@@ -123,6 +134,6 @@ function make_link(rule,width,height,grain,seed) {
       "&width="+width+
       "&height="+height+
       "&grain="+grain+
-      "&custom_seed="+seed+
+      "&custom_seed="+Math.base(seed.join(''),2,36)+
       "&link=1");
    }

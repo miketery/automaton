@@ -1,9 +1,21 @@
 .ui-slider {
-   width: 300px;
+   width: 250px;
    float: left;
    height: .6em;
    margin: 5px;
    }
 input {
    width: 60px;
+   }
+#form {
+   width: 400px;
+   }
+#display {
+   }
+.cell {
+   display: table-cell;
+   margin: 0px;
+   }
+.row {
+   display: table-row;
    }

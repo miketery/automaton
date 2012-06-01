@@ -5,6 +5,7 @@ $height=( isset($_GET["height"]) ? $_GET["height"] : 900 );
 $grain=( isset($_GET["grain"]) ? $_GET["grain"] : 2 );
 $seed=( isset($_GET["seed"]) ? $_GET["seed"] : '' );
 $link=( isset($_GET["link"]) ? 1 : 0);
+$custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,36 +24,47 @@ $link=( isset($_GET["link"]) ? 1 : 0);
 <script src="automaton.js" type="text/javascript"></script>
 </head>
 <body onload="draw()">
-<form name="automaton">
-<!--comment.... check collorscale at brettolbert.com/projects/colorscale/-->
-<label for=="rule">Rule (0-255): <input type="text" name="rule" value="<?=$rule?>" id="rule"></label>
-<label for="seed">Seed: <select name="seed" id="seed"></label>
-<?php
-$a=array('middle','right','alternating','random','custom');
-foreach($a as $e) {
-   if($seed==$e)
-      echo '<option value="'.$e.'" selected>'.ucfirst($e).'</option>';
-   else
-      echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
-   }
-?>
-</select>
-<div id="width_s"></div>
-   <label for="width">Width: <input name="width" value="<?=$width?>" id="width">px</label>
-<div id="height_s"></div>
-   <label for="height">Height: <input name="height" value="<?=$height?>" id="height">px</label>
-<div id="grain_s"></div>
-   <label for="grain">Granulity: <input name="grain" value="<?=$grain?>" id="grain"></label>
-<input type="submit" onclick="draw(); return false;" value="GO">
-<span style="background: blue;" value=""><a href="">Link</a></span>
-<input type="hidden" name="link" id="link" value="<?=$link?>">
-</form>
-
-
-<canvas id="canvas"></canvas>
-
-
-
+<div id="form">
+   <form name="automaton">
+   <!--comment.... check collorscale at brettolbert.com/projects/colorscale/-->
+   <label for=="rule">Rule (0-255): <input type="text" name="rule" value="<?=$rule?>" id="rule"></label>
+   <label for="seed">Seed: <select name="seed" id="seed"></label>
+   <?php
+   $a=array('middle','right','alternating','random','custom');
+   foreach($a as $e) {
+      if($seed==$e)
+         echo '<option value="'.$e.'" selected>'.ucfirst($e).'</option>';
+      else
+         echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+      }
+   ?>
+   </select>
+   <div class="row">
+      <div class="cell"><label for="width">Width</label></div>
+      <div id="width_s" class="cell"></div>
+      <div class="cell"><input name="width" value="<?=$width?>" id="width">px</div>
+   </div>
+   <div class="row">
+      <div class="cell"><label for="height">Height</label></div>
+      <div id="height_s" class="cell"></div>
+      <div class="cell"><input name="height" value="<?=$height?>" id="height">px</div>
+   </div>
+   <div class="row">
+      <div class="cell"><label for="grain">Granulity</div>
+      <div id="grain_s" class="cell"></div>
+      <div class="cell"><input name="grain" value="<?=$grain?>" id="grain">px</div>
+   </div>
+   <div class="row1">
+      <input type="submit" onclick="draw(); return false;" value="GO">
+      <span style="background: blue;" value=""><a class="link" href="">Link</a></span>
+   </div>
+   <input type="hidden" name="link" id="link" value="<?=$link?>">
+   <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
+   </form>
+</div>
+<div id="display">
+   <canvas id="canvas"></canvas>
+</div>
 </body>
 <style>
 #canvas {
