@@ -1,9 +1,10 @@
 <?php
 $rule=( isset($_GET["rule"]) ? $_GET["rule"] : 110 );
-$width=( isset($_GET["width"]) ? $_GET["width"] : 960 );
-$height=( isset($_GET["height"]) ? $_GET["height"] : 2000 );
-$grain=( isset($_GET["grain"]) ? $_GET["grain"] : 8 );
+$width=( isset($_GET["width"]) ? $_GET["width"] : 300 );
+$height=( isset($_GET["height"]) ? $_GET["height"] : 900 );
+$grain=( isset($_GET["grain"]) ? $_GET["grain"] : 2 );
 $seed=( isset($_GET["seed"]) ? $_GET["seed"] : '' );
+$link=( isset($_GET["link"]) ? 1 : 0);
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +44,8 @@ foreach($a as $e) {
 <div id="grain_s"></div>
    <label for="grain">Granulity: <input name="grain" value="<?=$grain?>" id="grain"></label>
 <input type="submit" onclick="draw(); return false;" value="GO">
-<span style="background: blue;" value="">Link</span>
+<span style="background: blue;" value=""><a href="">Link</a></span>
+<input type="hidden" name="link" id="link" value="<?=$link?>">
 </form>
 
 

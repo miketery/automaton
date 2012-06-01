@@ -5,6 +5,7 @@ function draw() {
    var width = $('#width').val();
    var height = $('#height').val();
    var grain = $('#grain').val();
+   if($('#link').val()==1) $('#seed').val('custom');
 
    //check bounds
    ((rule>=0 && rule<=255) ? null : rule=110); //check rule bounds
@@ -37,7 +38,8 @@ function draw() {
    //define the rule
    var rule_a=make_rule(rule);
    //make top row or the seed
-   var cur_row=doseed(seed,cols);
+   var seed=doseed(seed,cols);
+   var cur_row=seed; //seed is needed in making link, cur_row used in actual build
 
    //start drawing the pattern as per the initial seed and the rule (execute at donext
    for(var i=0; i<rows; i++) {
@@ -48,6 +50,7 @@ function draw() {
          }
       cur_row=donext(rule_a,cur_row,cols);
       }
+   make_link(rule,width,height,grain,seed);
    return false;
    }
 function donext(rule,row,cols) {
@@ -114,4 +117,12 @@ function clear_row(row,cols) {
       }
    return row;
    }
-
+function make_link(rule,width,height,grain,seed) {
+   $(".link").attr("href","http://"+window.location.hostname+"/proj/automaton/"+
+      "?rule="+rule+
+      "&width="+width+
+      "&height="+height+
+      "&grain="+grain+
+      "&custom_seed="+seed+
+      "&link=1");
+   }
