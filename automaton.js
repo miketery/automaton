@@ -129,7 +129,9 @@ function clear_row(row,cols) {
    return row;
    }
 function make_link(rule,width,height,grain,seed) {
-   $(".link").attr("href","http://"+window.location.hostname+"/proj/automaton/"+
+   var path = document.location.pathname;
+   var dir = path.substr(indexOf('/', 1), path.lastIndexOf('/')+1);
+   $(".link").attr("href","http://"+window.location.hostname+dir+
       "?rule="+rule+
       "&width="+width+
       "&height="+height+
