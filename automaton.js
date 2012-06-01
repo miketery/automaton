@@ -130,8 +130,7 @@ function clear_row(row,cols) {
    }
 function make_link(rule,width,height,grain,seed) {
    var path = document.location.pathname;
-   var dir = path.substr(indexOf('/', 1), path.lastIndexOf('/')+1);
-   $(".link").attr("href","http://"+window.location.hostname+dir+
+   $(".link").attr("href","http://"+window.location.hostname+path+
       "?rule="+rule+
       "&width="+width+
       "&height="+height+
