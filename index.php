@@ -16,12 +16,12 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <script src="/lib/jquery-ui-1.8.20/jquery-1.7.2.js"></script>
 <script src="/lib/jquery-ui-1.8.20/ui/minified/jquery-ui.min.js"></script>
 
-<link rel="stylesheet" href="jquery.ui.spinner/ui.spinner.css" type="text/css">
-<script src="jquery.ui.spinner/ui.spinner.js"></script>
+<link rel="stylesheet" href="js/jquery.ui.spinner/ui.spinner.css" type="text/css">
+<script src="js/jquery.ui.spinner/ui.spinner.js"></script>
 
-<link rel="stylesheet" href="style.css" type="text/css">
-<script src="document.js" type="text/javascript"></script>
-<script src="automaton.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="js/document.js" type="text/javascript"></script>
+<script src="js/automaton.js" type="text/javascript"></script>
 </head>
 <body onload="draw()">
 <div id="form">
