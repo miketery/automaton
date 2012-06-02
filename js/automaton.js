@@ -27,6 +27,7 @@ function draw() {
    //set dimentions
    canvas.setAttribute('width',width);
    canvas.setAttribute('height',height);
+   $('#display').width(width);
    //start context
    var ctx = canvas.getContext ("2d");
    //draw background
@@ -109,17 +110,20 @@ function doseed(seed,cols) {
             }
          break;
      case 'custom':
-         alert(Math.base($('#custom_seed').val(),32,2));
-         var binary=Math.base($('#custom_seed').val(),32,2).split('');
-         binary.reverse();
-         for(var i=0; i<binary.length; i++) {
-            cur_row[cols-i]=binary[i];
-            }
+         var custom_seed=$('#custom_seed').val();
+         var binary=new Array();
+         for(i=0; i<custom_seed.length; i++)
+            binary[i]=Math.base(custom_seed[i],16,2);
+         binary=binary.join('').split('');
+         for(i=0; i<binary.length; i++)
+            cur_row[i]=parseInt(binary[i]);
+         console.log(cur_row)   
          break;
       default:
          var mid=Math.floor(cols/2); 
          cur_row[mid]=1;
       }
+         console.log(cur_row);
    return cur_row;
    }
 function clear_row(row,cols) {
@@ -129,12 +133,26 @@ function clear_row(row,cols) {
    return row;
    }
 function make_link(rule,width,height,grain,seed) {
+   //convert top row seed of binary into hex
+   for(i=8; i<seed.length; i=i+8) {
+      seed[i]=" "+seed[i];
+      }
+   var custom_seed=seed.join('');
+   var hex_seed=new Array();
+   var append=8-seed.length%8;
+   if(append!=8)
+      for(i=0; i<append; i++)
+         custom_seed+="0";
+   var bytes=custom_seed.split(' ');
+   for(i=0; i<bytes.length; i++)
+      hex_seed[i]=Math.base(bytes[i],2,16);
+   
    var path = document.location.pathname;
    $(".link").attr("href","http://"+window.location.hostname+path+
       "?rule="+rule+
       "&width="+width+
       "&height="+height+
       "&grain="+grain+
-      "&custom_seed="+Math.base(seed.join(''),2,32)+
+      "&custom_seed="+hex_seed.join('')+
       "&link=1");
    }

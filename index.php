@@ -41,17 +41,17 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    </select>
    <div class="row">
       <div class="cell"><label for="width">Width</label></div>
-      <div id="width_s" class="cell"></div>
+      <div class="cell"><div id="width_s"></div></div>
       <div class="cell"><input name="width" value="<?=$width?>" id="width">px</div>
    </div>
    <div class="row">
       <div class="cell"><label for="height">Height</label></div>
-      <div id="height_s" class="cell"></div>
+      <div class="cell"><div id="height_s"></div></div>
       <div class="cell"><input name="height" value="<?=$height?>" id="height">px</div>
    </div>
    <div class="row">
       <div class="cell"><label for="grain">Granulity</div>
-      <div id="grain_s" class="cell"></div>
+      <div class="cell"><div id="grain_s"></div></div>
       <div class="cell"><input name="grain" value="<?=$grain?>" id="grain">px</div>
    </div>
    <div class="row1">
