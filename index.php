@@ -62,6 +62,7 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
    </form>
 </div>
+<p>Blah</p>
 <div id="display">
    <canvas id="canvas"></canvas>
 </div>
