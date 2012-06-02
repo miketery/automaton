@@ -108,14 +108,14 @@ function doseed(seed,cols) {
                cur_row[i]=1;
             }
          break;
-     /* case 'custom':
-         alert(Math.base($('#custom_seed').val(),36,2));
-         var binary=Math.base($('#custom_seed').val(),36,2).split('');
+     case 'custom':
+         alert(Math.base($('#custom_seed').val(),32,2));
+         var binary=Math.base($('#custom_seed').val(),32,2).split('');
          binary.reverse();
          for(var i=0; i<binary.length; i++) {
             cur_row[cols-i]=binary[i];
             }
-         break;*/
+         break;
       default:
          var mid=Math.floor(cols/2); 
          cur_row[mid]=1;
@@ -135,6 +135,6 @@ function make_link(rule,width,height,grain,seed) {
       "&width="+width+
       "&height="+height+
       "&grain="+grain+
-      "&custom_seed="+Math.base(seed.join(''),2,36)+
+      "&custom_seed="+Math.base(seed.join(''),2,32)+
       "&link=1");
    }
