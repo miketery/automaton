@@ -56,7 +56,7 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    </div>
    <div class="row1">
       <input type="submit" onclick="draw(); return false;" value="GO">
-      <span style="background: blue;" value=""><a class="link" href="">Link</a></span>
+      <span class="link"><a href="">Link</a></span>
    </div>
    <input type="hidden" name="link" id="link" value="<?=$link?>">
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">

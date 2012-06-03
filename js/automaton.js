@@ -110,20 +110,23 @@ function doseed(seed,cols) {
             }
          break;
      case 'custom':
-         var custom_seed=$('#custom_seed').val();
+         var custom_seed=$('#custom_seed').val().split('');
          var binary=new Array();
-         for(i=0; i<custom_seed.length; i++)
-            binary[i]=Math.base(custom_seed[i],16,2);
-         binary=binary.join('').split('');
+         var tmp;
+         for(i=0; i<custom_seed.length; i++) {
+            tmp=Math.base(custom_seed[i],16,2);
+            while(tmp.split('').length<4) //each hex digit should have 4 binary ie 1=0001 not 1
+               tmp='0'+tmp;
+            binary[i]=tmp;
+            }
+         binary=binary.join('').split(''); //join the array which were in 4s and split into bits 
          for(i=0; i<binary.length; i++)
-            cur_row[i]=parseInt(binary[i]);
-         console.log(cur_row)   
+            cur_row[i]=parseInt(binary[i]); //makesure each is an integer
          break;
       default:
          var mid=Math.floor(cols/2); 
          cur_row[mid]=1;
       }
-         console.log(cur_row);
    return cur_row;
    }
 function clear_row(row,cols) {
@@ -134,25 +137,35 @@ function clear_row(row,cols) {
    }
 function make_link(rule,width,height,grain,seed) {
    //convert top row seed of binary into hex
-   for(i=8; i<seed.length; i=i+8) {
+   for(i=8; i<seed.length; i=i+8) { //every eith character put space 
+                                    //(so can split into byte size)
       seed[i]=" "+seed[i];
       }
-   var custom_seed=seed.join('');
-   var hex_seed=new Array();
-   var append=8-seed.length%8;
-   if(append!=8)
+   var custom_seed=seed.join(''); //a string of binary with spaces in between each 8 bits
+   //if !seed%8 append so is (so that conversion to hex works properly otherwise get a shift in bits)
+   var append=8-seed.length%8; 
+   if(append!=8) //if append is anything but 8 bits add one so that we have even size
       for(i=0; i<append; i++)
          custom_seed+="0";
-   var bytes=custom_seed.split(' ');
-   for(i=0; i<bytes.length; i++)
-      hex_seed[i]=Math.base(bytes[i],2,16);
-   
-   var path = document.location.pathname;
-   $(".link").attr("href","http://"+window.location.hostname+path+
+   var bytes=custom_seed.split(' '); //split out custom_seed with binary string into bytes
+   var tmp='';
+   var hex_seed=new Array(); //where hex string will be stored
+   for(i=0; i<bytes.length; i++)  { //for each byte convert to binary
+      tmp=Math.base(bytes[i],2,16);
+      if(tmp.split('').length<2) //make sure hex is 2 digit, ie 00001000=08 not 8
+         hex_seed[i]="0"+tmp;
+      else 
+         hex_seed[i]=tmp;
+      } //hex_seed is ready
+   var path = document.location.pathname; //path of directory
+   var host= window.location.hostname; //server host
+   //assign href of link with current state and hex seed
+   $(".link a").attr("href","http://"+host+path+
       "?rule="+rule+
       "&width="+width+
       "&height="+height+
       "&grain="+grain+
       "&custom_seed="+hex_seed.join('')+
       "&link=1");
+   
    }
