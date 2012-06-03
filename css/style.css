@@ -35,3 +35,8 @@ input {
 .row {
    display: table-row;
    }
+.button {
+   background: blue;
+   padding: 5px;
+   width: auto;
+   }

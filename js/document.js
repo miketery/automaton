@@ -1,5 +1,6 @@
 $(document).ready(function() {
-   
+   draw();
+   $('.draw').click(function() {draw(); return false;}); 
    $('#rule').spinner({min: 0, max: 255});
    $('#width_s').slider({
       value: $('#width').val(),

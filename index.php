@@ -3,7 +3,7 @@ $rule=( isset($_GET["rule"]) ? $_GET["rule"] : 110 );
 $width=( isset($_GET["width"]) ? $_GET["width"] : 300 );
 $height=( isset($_GET["height"]) ? $_GET["height"] : 900 );
 $grain=( isset($_GET["grain"]) ? $_GET["grain"] : 2 );
-$seed=( isset($_GET["seed"]) ? $_GET["seed"] : '' );
+$seed=( isset($_GET["seed"]) ? $_GET["seed"] : 'random' );
 $link=( isset($_GET["link"]) ? 1 : 0);
 $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 ?>
@@ -11,10 +11,9 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <html>
 <head>
    <title>Cellular Automaton</title>
-<link rel="stylesheet" href="/lib/jquery-ui-1.8.20/themes/base/jquery.ui.all.css" type="text/css">
-
-<script src="/lib/jquery-ui-1.8.20/jquery-1.7.2.js"></script>
-<script src="/lib/jquery-ui-1.8.20/ui/minified/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="js/jquery.ui.all.css" type="text/css">
+<script src="js/jquery-1.7.2.js"></script>
+<script src="js/jquery-ui.min.js"></script>
 
 <link rel="stylesheet" href="js/jquery.ui.spinner/ui.spinner.css" type="text/css">
 <script src="js/jquery.ui.spinner/ui.spinner.js"></script>
@@ -23,12 +22,12 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <script src="js/document.js" type="text/javascript"></script>
 <script src="js/automaton.js" type="text/javascript"></script>
 </head>
-<body onload="draw()">
+<body>
 <div id="form">
    <form name="automaton">
    <!--comment.... check collorscale at brettolbert.com/projects/colorscale/-->
    <label for=="rule">Rule (0-255): <input type="text" name="rule" value="<?=$rule?>" id="rule"></label>
-   <label for="seed">Seed: <select name="seed" id="seed"></label>
+   <label for="seed">Seed: </label><select name="seed" id="seed">
    <?php
    $a=array('middle','right','alternating','random','custom');
    foreach($a as $e) {
@@ -55,11 +54,14 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
       <div class="cell"><input name="grain" value="<?=$grain?>" id="grain">px</div>
    </div>
    <div class="row1">
-      <input type="submit" onclick="draw(); return false;" value="GO">
+      <input type="submit" class="button draw" value="DRAW">
+      <input type="button" class="button previous" value="Next+Draw">
+      <input type="button" class="button next" value="Previous+Draw">
+      <input type="button" class="button download" value="Downlaod">
       <span class="link"><a href="">Link</a></span>
    </div>
-   <input type="hidden" name="link" id="link" value="<?=$link?>">
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
+   <input type="hidden" name="link" id="link" value="<?=$link?>">
    </form>
 </div>
 <div id="display">
