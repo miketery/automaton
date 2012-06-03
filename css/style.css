@@ -40,3 +40,12 @@ input {
    padding: 5px;
    width: auto;
    }
+a.link {
+   margin-top: 5px;
+   }
+a.link img {
+   margin-bottom: -4px;
+   }
+a.link:hover {
+	border-bottom: 2px #D40000 dotted;
+   }

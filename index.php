@@ -11,7 +11,7 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <html>
 <head>
    <title>Cellular Automaton</title>
-<link rel="stylesheet" href="js/jquery.ui.all.css" type="text/css">
+<link rel="stylesheet" href="/lib/jquery-ui-1.8.20/themes/base/jquery.ui.all.css" type="text/css">
 <script src="js/jquery-1.7.2.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 
@@ -55,14 +55,15 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    </div>
    <div class="row1">
       <input type="submit" class="button draw" value="DRAW">
-      <input type="button" class="button previous" value="Next+Draw">
-      <input type="button" class="button next" value="Previous+Draw">
+      <input type="button" class="button next" value="Next+Draw">
+      <input type="button" class="button prev" value="Previous+Draw">
       <input type="button" class="button download" value="Downlaod">
-      <span class="link"><a href="">Link</a></span>
+      <a href="" class="link"><img src="images/link_icon.png"></a>
    </div>
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
    <input type="hidden" name="link" id="link" value="<?=$link?>">
    </form>
+   <canvas id="rule_canvas"></canvas>
 </div>
 <div id="display">
    <canvas id="canvas"></canvas>

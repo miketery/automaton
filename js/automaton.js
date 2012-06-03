@@ -84,6 +84,7 @@ function make_rule(rule) {
          rule=rule-Math.pow(2,i);
          } 
       }
+   var rule_canvas = document.getElementById('rule_canvas');
    return rule_a;
    }
 function doseed(seed,cols) {
@@ -160,7 +161,7 @@ function make_link(rule,width,height,grain,seed) {
    var path = document.location.pathname; //path of directory
    var host= window.location.hostname; //server host
    //assign href of link with current state and hex seed
-   $(".link a").attr("href","http://"+host+path+
+   $(".link").attr("href","http://"+host+path+
       "?rule="+rule+
       "&width="+width+
       "&height="+height+

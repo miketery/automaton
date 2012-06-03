@@ -1,6 +1,22 @@
 $(document).ready(function() {
    draw();
    $('.draw').click(function() {draw(); return false;}); 
+   $('.prev').click(function() {
+      var rule=$('#rule');
+      if(rule.val()==0)
+         rule.val(255);
+      else
+         rule.val(parseInt(rule.val())-1);
+      draw(); 
+      }); 
+   $('.next').click(function() {
+      var rule=$('#rule');
+      if(rule.val()==255)
+         rule.val(0);
+      else
+         rule.val(parseInt(rule.val())+1);
+      draw(); 
+      }); 
    $('#rule').spinner({min: 0, max: 255});
    $('#width_s').slider({
       value: $('#width').val(),
