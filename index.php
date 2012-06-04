@@ -53,17 +53,16 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
       <div class="cell"><div id="grain_s"></div></div>
       <div class="cell"><input name="grain" value="<?=$grain?>" id="grain">px</div>
    </div>
-   <div class="row1">
-      <input type="submit" class="button draw" value="DRAW">
-      <input type="button" class="button next" value="Next+Draw">
+      <input type="submit" class="button draw" value="Draw">
       <input type="button" class="button prev" value="Previous+Draw">
+      <input type="button" class="button next" value="Next+Draw">
       <input type="button" class="button download" value="Downlaod">
-      <a href="" class="link"><img src="images/link_icon.png"></a>
-   </div>
+      <span class="link_container"><a href="" class="link"><img src="images/link_icon.png" height="24" width="24">Link</a></span>
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
    <input type="hidden" name="link" id="link" value="<?=$link?>">
    </form>
-   <canvas id="rule_canvas"></canvas>
+   <canvas id="rule_canvas" height="30"></canvas>
+   <div id="progressbar"></div>
 </div>
 <div id="display">
    <canvas id="canvas"></canvas>

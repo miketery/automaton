@@ -17,6 +17,9 @@ div.ui-slider {
 input {
    width: 60px;
    }
+.cell input {
+   width: 40px;
+   }
 #form {
    width: 410px;
    float: left;
@@ -36,9 +39,17 @@ input {
    display: table-row;
    }
 .button {
+   border: 0 none;
    background: blue;
    padding: 5px;
    width: auto;
+   background: #AAAAAA;
+   margin-bottom: 2px;
+   }
+.button:hover {
+   background: #CCCCCC;
+	border-bottom: 2px #D40000 dotted;
+   margin-bottom: 0;
    }
 a.link {
    margin-top: 5px;
@@ -48,4 +59,13 @@ a.link img {
    }
 a.link:hover {
 	border-bottom: 2px #D40000 dotted;
+   }
+.link_container {
+   position: relative;
+   top: 3px;
+   display: inline-block;
+   }
+.ui-progressbar {
+   width: 300px;
+   height: 10px;
    }

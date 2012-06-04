@@ -50,6 +50,7 @@ function draw() {
             } 
          }
       cur_row=donext(rule_a,cur_row,cols);
+      $('#progressbar').progressbar({ value: 100*(i/rows)});
       }
    make_link(rule,width,height,grain,seed);
    return false;

@@ -17,6 +17,7 @@ $(document).ready(function() {
          rule.val(parseInt(rule.val())+1);
       draw(); 
       }); 
+   $("#progressbar").progressbar({ value: 0 });
    $('#rule').spinner({min: 0, max: 255});
    $('#width_s').slider({
       value: $('#width').val(),
