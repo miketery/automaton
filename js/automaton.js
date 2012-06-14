@@ -27,7 +27,7 @@ function draw() {
    //set dimentions
    canvas.setAttribute('width',width);
    canvas.setAttribute('height',height);
-   $('#display').width(width);
+   $('#content').width(width);
    //start context
    var ctx = canvas.getContext ("2d");
    //draw background
@@ -50,8 +50,11 @@ function draw() {
             } 
          }
       cur_row=donext(rule_a,cur_row,cols);
-      $('#progressbar').progressbar({ value: 100*(i/rows)});
+      //console.log(parseInt(100*i/rows));
+      $('#progressbar').progressbar({ value: parseInt(100*(i/rows))});
       }
+
+   $('#progressbar').progressbar({ value: 100});
    make_link(rule,width,height,grain,seed);
    return false;
    }

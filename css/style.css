@@ -1,5 +1,12 @@
+html {
+   margin: 4px;
+   padding: 0;
+   }
 body {
 	background-image: url('../images/45degreee_fabric.png');
+   margin: 0;
+   padding: 0;
+   min-width: 800px;
    }
 div.ui-slider {
    width: 250px;
@@ -20,14 +27,23 @@ input {
 .cell input {
    width: 40px;
    }
-#form {
+#user_input {
+   position: absolute;
+   top: 4px;
+   left: 0px
    width: 410px;
-   float: left;
    }
-#display {
-   width: 300px;
-   margin-right: auto;
-   margin-left: auto;
+#toggle_tab {
+   position: relative;
+   width: 100px;
+   height: 20px;
+   background: white;
+   }
+#content {
+   margin-left: 410px;
+   }
+#canvas {
+   border: 1px solid black;
    }
 .cell {
    vertical-align: middle;
@@ -52,13 +68,17 @@ input {
    margin-bottom: 0;
    }
 a.link {
-   margin-top: 5px;
+   height: 20px;
+   padding-top: 5px;
+   background: #AAAAAA;
+   color: black;
    }
 a.link img {
    margin-bottom: -4px;
    }
 a.link:hover {
 	border-bottom: 2px #D40000 dotted;
+   background: #CCCCCC;
    }
 .link_container {
    position: relative;
@@ -68,4 +88,35 @@ a.link:hover {
 .ui-progressbar {
    width: 300px;
    height: 10px;
+   }
+/*.hide:hover {
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+   -moz-opacity:1;
+   opacity: 1;
+   background: rgba(150, 150, 150, 0.6);
+   }
+.hide {
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+   -moz-opacity:0.4;
+   opacity: 0.4;
+   }*/
+.rule_result .cell {
+   border: none;
+   width: 12px;
+   height: 12px;
+   }
+.rule_previous .cell {
+   width: 12px;
+   height: 12px;
+   border: 1px solid black;
+   }
+.rule_result .bit {
+   border: 1px solid black;
+   }
+#rule_display .divider {
+   width: 5px;
+   border: none;
+   }
+#rule_display .filled {
+   background: black;
    }

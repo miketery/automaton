@@ -14,6 +14,7 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <link rel="stylesheet" href="/lib/jquery-ui-1.8.20/themes/base/jquery.ui.all.css" type="text/css">
 <script src="js/jquery-1.7.2.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.transit.min.js"></script>
 
 <link rel="stylesheet" href="js/jquery.ui.spinner/ui.spinner.css" type="text/css">
 <script src="js/jquery.ui.spinner/ui.spinner.js"></script>
@@ -23,7 +24,7 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
 <script src="js/automaton.js" type="text/javascript"></script>
 </head>
 <body>
-<div id="form">
+<div id="user_input" value="0" class="hide">
    <form name="automaton">
    <!--comment.... check collorscale at brettolbert.com/projects/colorscale/-->
    <label for=="rule">Rule (0-255): <input type="text" name="rule" value="<?=$rule?>" id="rule"></label>
@@ -31,10 +32,8 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    <?php
    $a=array('middle','right','alternating','random','custom');
    foreach($a as $e) {
-      if($seed==$e)
-         echo '<option value="'.$e.'" selected>'.ucfirst($e).'</option>';
-      else
-         echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
+      if($seed==$e) echo '<option value="'.$e.'" selected>'.ucfirst($e).'</option>';
+      else echo '<option value="'.$e.'">'.ucfirst($e).'</option>';
       }
    ?>
    </select>
@@ -61,16 +60,36 @@ $custom_seed=( isset($_GET["custom_seed"]) ? $_GET["custom_seed"] : null );
    <input type="hidden" name="custom_seed" id="custom_seed" value="<?=$custom_seed?>">
    <input type="hidden" name="link" id="link" value="<?=$link?>">
    </form>
-   <canvas id="rule_canvas" height="30"></canvas>
+   <div id="rule_display">
+      <div class="row rule_previous">
+         <div class="cell filled"></div><div class="cell filled"></div><div class="cell filled"></div><div class="cell divider"></div>
+         <div class="cell filled"></div><div class="cell filled"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell filled"></div><div class="cell"></div><div class="cell filled"></div><div class="cell divider"></div>
+         <div class="cell filled"></div><div class="cell"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell filled"></div><div class="cell filled"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell filled"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell"></div><div class="cell filled"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      </div>
+      <div class="row rule_result">
+         <div class="cell"></div><div class="cell bit" id="bit7"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit6"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit5"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit4"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit3"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit2"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit1"></div><div class="cell"></div><div class="cell divider"></div>
+         <div class="cell"></div><div class="cell bit" id="bit0"></div><div class="cell"></div>
+      </div>
+   </div>
+   <!--canvas id="rule_canvas" height="30"></canvas>
    <div id="progressbar"></div>
+   <div id="toggle_tab"></div-->
 </div>
-<div id="display">
+
+<div id="content">
    <canvas id="canvas"></canvas>
 </div>
+
 </body>
-<style>
-#canvas {
-   border: 1px solid black;
-   }
-</style>
 </html>

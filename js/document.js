@@ -17,7 +17,21 @@ $(document).ready(function() {
          rule.val(parseInt(rule.val())+1);
       draw(); 
       }); 
-   $("#progressbar").progressbar({ value: 0 });
+   $('#toggle_tab').click(function() {
+      var user_input=$('#user_input');
+      var y_delta=user_input.height()-20;
+      if(user_input.val()==0) {
+         user_input.val(1);
+         $('#user_input').transition({y:-y_delta}); 
+         $('#user_input').removeClass('hide');
+         }
+      else {
+         $('#user_input').transition({y:0});
+         $('#user_input').addClass('hide');
+         user_input.val(0);
+         }
+      console.log(height);
+      });
    $('#rule').spinner({min: 0, max: 255});
    $('#width_s').slider({
       value: $('#width').val(),
@@ -45,3 +59,5 @@ $(document).ready(function() {
    $('#height').change(function() {$('#height_s').slider({value: $(this).val()})});
    $('#grain').change(function() {$('#grain_s').slider({value: $(this).val()})});
    });
+
+//$("#progressbar").progressbar({ value: 0 });
